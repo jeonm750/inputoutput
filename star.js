@@ -13,19 +13,42 @@ let button;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   button = createButton("Start Over");
-  button.position(100,100);
-  button.size(200,100);
+  button.position(1200,770);
+  button.size(80,35);
   button.mouseClicked(startover);
   current = createVector(0,0);
   previous = createVector(0,0);
-};
 
+  input = createInput();
+  input.position(1200, 725);
+  input.size(400,30);
+
+  greeting = createElement('h2', 'name your star!');
+  greeting.position(1200, 670);
+
+  textAlign(CENTER);
+  textSize(50);
+
+  button = createButton('submit');
+  button.position(input.x + 420, 725);
+  button.mousePressed(greet);
+  button.size(80,35);
+  
+
+  function greet() {
+  const name = input.value();
+  greeting.html(name);
+  input.value(''); 
+}
+
+}
 
 function draw() {
-  background(100);
-    text('Create Your Own Star!', 450,90);
-    textSize(80);
+ 
+    text()
     fill(500);
+    stroke(500);
+
   
   // If it's time for a new point
   if (millis() > next && painting) {
@@ -69,7 +92,7 @@ function mousePressed() {
 function mouseReleased() {
   painting = false;
 }
-
+ 
 
 // A Path is a list of particles
 class Path {
@@ -130,11 +153,12 @@ class Particle {
     }
   }
 }
-
 function startover() {
-  background(200);
+//console.log("startover button working");
+//clear();
+window.location.reload();
 }
- 
+
 
 
 
